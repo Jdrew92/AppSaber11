@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Proyecto</string>
+    <string name="txt_nombres">Nombres</string>
+    <string name="txt_apellidos">Apellidos</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_mail_example">Example@mail.com</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_repeat_password">Repetir Contraseña</string>
+    <string name="login">Log In</string>
+    <string name="txt_registrarse">Registrarse</string>
+    <string name="txt_registro">Registro de Usuario</string>
 </resources>

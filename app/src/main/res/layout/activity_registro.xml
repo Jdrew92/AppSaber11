@@ -73,6 +73,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:hint="@string/txt_password"
             android:textColorHint="#616161"
             app:hintEnabled="false"
@@ -92,6 +93,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:hint="@string/txt_repeat_password"
             android:textColorHint="#616161"
             app:hintEnabled="false"
@@ -110,6 +112,25 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/spRol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:smsp_arrowSize="16sp"
+            app:smsp_errorTextSize="16sp"
+            app:smsp_floatingLabelColor="@android:color/primary_text_light"
+            app:smsp_floatingLabelSize="18sp"
+            app:smsp_hint="Rol"
+            app:smsp_hintColor="#616161"
+            app:smsp_hintSize="20sp"
+            app:smsp_itemColor="@android:color/primary_text_light"
+            app:smsp_itemListColor="@android:color/primary_text_light"
+            app:smsp_itemListHintBackgroundColor="#808080"
+            app:smsp_itemListHintColor="#FFFFFF"
+            app:smsp_itemSize="20sp"
+            app:smsp_multilineError="false"
+            app:smsp_selectedItemListColor="#FF5252" />
     </LinearLayout>
 
     <CheckBox

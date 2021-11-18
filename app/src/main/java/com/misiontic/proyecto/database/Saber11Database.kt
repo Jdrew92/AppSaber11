@@ -1,9 +1,10 @@
-package com.misiontic.proyecto.room_db
+package com.misiontic.proyecto.database
 import android.content.Context
 import androidx.room.*
 import com.misiontic.proyecto.Entities.Usuario
+import com.misiontic.proyecto.dao.UsuarioDAO
 
-@Database(entities = arrayOf(Usuario::class), version = 1)
+@Database(entities = arrayOf(Usuario::class), version = 2)
 abstract class Saber11Database:RoomDatabase() {
     abstract fun usuarioDao(): UsuarioDAO
 
@@ -11,7 +12,7 @@ abstract class Saber11Database:RoomDatabase() {
         @Volatile
         private var INSTANCE: Saber11Database? = null
 
-        fun getDatabase(context: Context): Saber11Database{
+        fun getDatabase(context: Context): Saber11Database {
             return INSTANCE ?: synchronized(this){
                 val instance = Room.databaseBuilder(context.applicationContext,
                     Saber11Database::class.java,

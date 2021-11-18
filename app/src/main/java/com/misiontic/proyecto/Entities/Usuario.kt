@@ -10,5 +10,6 @@ data class Usuario(
     val apellidos: String?,
     val telefono:String?,
     val email:String?,
-    val password:String?
+    val password:String?,
+    val rol:String?
 )

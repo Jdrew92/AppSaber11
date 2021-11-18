@@ -16,4 +16,5 @@
     <string name="terms_error_msg">Debe aceptar los términos y condiciones</string>
     <string name="password_not_valid_msg">Debe contener minúsculas, mayúsculas, números y caractéres especiales. Mínimo 8 caractéres.</string>
     <string name="does_not_match_passwords_msg">No coindiden las contraseñas</string>
+    <string name="rol_error_msg">"Debe seleccionar un rol"</string>
 </resources>

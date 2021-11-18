@@ -1,22 +1,26 @@
 package com.misiontic.proyecto
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
+import android.view.View
+import android.widget.*
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
 import com.misiontic.proyecto.Entities.Usuario
-import com.misiontic.proyecto.room_db.Saber11Database
+import com.misiontic.proyecto.database.Saber11Database
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayList
 
 class RegistroActivity : AppCompatActivity() {
+
+    private var roles:ArrayList<String> = ArrayList()
+    private var rol:String? = null
 
     private lateinit var edtEmail: EditText
     private lateinit var edtNombres: EditText
@@ -26,12 +30,14 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var edtPassword2: EditText
     private lateinit var chkTerminos: CheckBox
     private lateinit var tvErrorTerminos: TextView
-
+    private lateinit var spRol: SmartMaterialSpinner<String>
     private lateinit var btnRegistrar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
+
+        initSpinner()
 
         edtEmail = findViewById(R.id.edtEmail)
         edtNombres = findViewById(R.id.edtNombres)
@@ -42,8 +48,25 @@ class RegistroActivity : AppCompatActivity() {
         chkTerminos = findViewById(R.id.chkTerminos)
         tvErrorTerminos = findViewById(R.id.tvErrorTerminos)
         btnRegistrar = findViewById(R.id.btnRegistrar)
-
+        spRol = findViewById(R.id.spRol)
         tvErrorTerminos.visibility = TextView.GONE
+
+        spRol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                rol = spRol.selectedItem
+                spRol.errorText = null
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                spRol.errorText = getString(R.string.rol_error_msg)
+            }
+
+        }
 
         edtEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -89,25 +112,35 @@ class RegistroActivity : AppCompatActivity() {
 
         btnRegistrar.setOnClickListener {
             if (allInfoIsFilled()) {
+
                 val db = Saber11Database.getDatabase(this)
                 val usuarioDao = db.usuarioDao()
                 val usuario = Usuario(
                     0, edtNombres.text.toString(),
                     edtApellidos.text.toString(), edtTelefono.text.toString(),
-                    edtEmail.text.toString(), edtPassword.text.toString()
-                )
+                    edtEmail.text.toString(), edtPassword.text.toString(),
+                rol)
 
                 runBlocking {
                     launch {
                         val result = usuarioDao.insert(usuario)
                         if(result != -1L){
-                            Snackbar.make(it, "Se ha registrado con éxito", Snackbar.LENGTH_LONG).show()
+                            Toast.makeText(this@RegistroActivity, "Se ha registrado con éxito!", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this@RegistroActivity, MainActivity::class.java)
+                            startActivity(intent)
                             finish()
                         }
                     }
                 }
             }
         }
+    }
+
+    private fun initSpinner() {
+        spRol = findViewById(R.id.spRol)
+        roles.add("Docente")
+        roles.add("Estudiante")
+        spRol.item = roles
     }
 
     private fun isMailValid(text: CharSequence?): Boolean {
@@ -150,6 +183,11 @@ class RegistroActivity : AppCompatActivity() {
             edtPassword2.text.isNullOrEmpty() -> {
                 edtPassword2.requestFocus()
                 edtPassword2.error = getString(R.string.blank_error_msg)
+                false
+            }
+            spRol.selectedItem.isNullOrEmpty() -> {
+                spRol.requestFocus()
+                spRol.errorText = getString(R.string.rol_error_msg)
                 false
             }
             !chkTerminos.isChecked -> {

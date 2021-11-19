@@ -123,12 +123,18 @@ class RegistroActivity : AppCompatActivity() {
 
                 runBlocking {
                     launch {
-                        val result = usuarioDao.insert(usuario)
-                        if(result != -1L){
-                            Toast.makeText(this@RegistroActivity, "Se ha registrado con éxito!", Toast.LENGTH_LONG).show()
-                            val intent = Intent(this@RegistroActivity, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                        val emailSearched = usuarioDao.getUsuarioByEmail(edtEmail.text.toString())
+                        if(emailSearched.isNullOrBlank()){
+                            val result = usuarioDao.insert(usuario)
+                            if(result != -1L){
+                                Toast.makeText(this@RegistroActivity, "Se ha registrado con éxito!", Toast.LENGTH_LONG).show()
+                                val intent = Intent(this@RegistroActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                        } else {
+                            edtEmail.requestFocus()
+                            edtEmail.error = getString(R.string.email_exist_error)
                         }
                     }
                 }

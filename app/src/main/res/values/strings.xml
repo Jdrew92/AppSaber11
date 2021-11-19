@@ -7,7 +7,7 @@
     <string name="txt_mail_example">Example@mail.com</string>
     <string name="txt_password">Contraseña</string>
     <string name="txt_repeat_password">Repetir Contraseña</string>
-    <string name="login">Log In</string>
+    <string name="txt_login">Iniciar Sesión</string>
     <string name="txt_registrarse">Registrarse</string>
     <string name="txt_registro">Registro de Usuario</string>
     <string name="blank_error_msg">Debe llenar este campo</string>
@@ -17,4 +17,9 @@
     <string name="password_not_valid_msg">Debe contener minúsculas, mayúsculas, números y caractéres especiales. Mínimo 8 caractéres.</string>
     <string name="does_not_match_passwords_msg">No coindiden las contraseñas</string>
     <string name="rol_error_msg">"Debe seleccionar un rol"</string>
+    <string name="txt_bienvenido">Bienvenido</string>
+    <string name="email_password_login_error">El correo y/o contraseña no son válidos</string>
+    <string name="txt_remember_password">Recordar Contraseña</string>
+    <string name="email_exist_error">El correo ya existe</string>
+
 </resources>

@@ -11,9 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto">
         <activity
-            android:name=".RegistroActivity"
+            android:name=".activities.NewPreguntaActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".activities.ListaPreguntasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

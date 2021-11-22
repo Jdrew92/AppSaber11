@@ -1,13 +1,11 @@
-com.misiontic.proyecto
+import com.misiontic.proyecto.Entities.Pregunta
+import com.misiontic.proyecto.R
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import com.misiontic.proyecto.model.Preguntas
-import kotlinx.android.synthetic.main.preguntas_list_item.view.*
 
 class PreguntasAdapter(private val mContext: Context, val listaPreguntas : List<Pregunta>)
     : ArrayAdapter<Pregunta>( mContext, 0, listaPreguntas) {
@@ -27,14 +25,14 @@ class PreguntasAdapter(private val mContext: Context, val listaPreguntas : List<
 //        return layout
 //    }
 
-    override fun getView(posicion: Int, view: View?, viewGroup: ViewGroup): View {
+    /*override fun getView(posicion: Int, view: View?, viewGroup: ViewGroup): View {
         val layout =  LayoutInflater.from(mContext).inflate( R.layout.preguntas_list_item, viewGroup, false )
         val pregunta =  listaPreguntas[posicion]
 
-        layout.Titulo.text = pregunta.titulo
+        layout.
         layout.nPregunta.text = "${pregunta.npregunta}"
         layout.nRespuesta.text = pregunta.materia
 
         return layout
-    }
+    }*/
 }

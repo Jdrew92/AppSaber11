@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.misiontic.proyecto.Entities.Pregunta
 import com.misiontic.proyecto.dao.PreguntasDAO
-import com.misiontic.proyecto.model.Preguntas
 
-@Database ( entities = [Pelicula::class], version = 1 )
+@Database ( entities = [Pregunta::class], version = 1 )
 abstract class PreguntasDB : RoomDatabase() {
     //Operaciones de la BD
     abstract fun preguntasDAO() : PreguntasDAO

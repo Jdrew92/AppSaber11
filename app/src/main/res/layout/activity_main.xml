@@ -7,7 +7,7 @@
     android:layout_margin="20dp"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -65,9 +65,11 @@
 
     <Button
         android:id="@+id/btnLogin"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="13dp"
+        android:background="@color/indigo_dark"
         android:text="@string/txt_login"
         android:textSize="20sp" />
 
@@ -88,23 +90,25 @@
             android:id="@+id/imageView3"
             android:layout_width="46dp"
             android:layout_height="50dp"
-            tools:srcCompat="@mipmap/google" />
+            app:srcCompat="@mipmap/google" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="60dp"
             android:layout_height="49dp"
             android:layout_marginBottom="8dp"
-            tools:srcCompat="@mipmap/facebook" />
+            app:srcCompat="@mipmap/facebook" />
 
     </LinearLayout>
 
 
     <Button
         android:id="@+id/btnRegistro"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="22dp"
+        android:background="@color/indigo_primary"
         android:text="@string/txt_registrarse"
         android:textSize="20sp" />
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".RegistroActivity">
+    tools:context=".activities.RegistroActivity">
 
     <TextView
         android:id="@+id/tvRegistro"

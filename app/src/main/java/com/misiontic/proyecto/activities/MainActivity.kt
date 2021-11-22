@@ -1,4 +1,4 @@
-package com.misiontic.proyecto
+package com.misiontic.proyecto.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doBeforeTextChanged
+import com.misiontic.proyecto.R
 import com.misiontic.proyecto.database.Saber11Database
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -43,17 +44,18 @@ class MainActivity : AppCompatActivity() {
     private fun login(){
         val db = Saber11Database.getDatabase(this)
         val usuarioDao = db.usuarioDao()
-        val email = edtEmailLogin.text.toString()
+        val email = edtEmailLogin.text.toString().trim().lowercase()
         val password = edtPasswordLogin.text.toString()
         runBlocking {
             launch {
                 val usuario = usuarioDao.getUsuarioByEmailAndPassword(email, password)
                 if(usuario.isNotEmpty()){
-                    val data = Bundle()
-                    data.putInt("id", usuario.first().id)
-                    data.putString("rol", usuario.first().rol)
-                    val intent = Intent(this@PreguntasAdapter)
-                    println("Ha iniciado sesión ${usuario.first().nombres} con rol ${usuario.first().rol}")
+                    val intent = Intent(this@MainActivity, ListaPreguntasActivity::class.java)
+                    intent.putExtra("id", usuario.first().id)
+                    intent.putExtra("rol", usuario.first().rol)
+                    //println("${usuario.first().id}, ${usuario.first().rol}")
+                    finish()
+                    startActivity(intent)
                 } else {
                     tvLoginError.visibility = View.VISIBLE
                 }

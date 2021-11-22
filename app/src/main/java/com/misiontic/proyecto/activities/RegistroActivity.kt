@@ -1,4 +1,4 @@
-package com.misiontic.proyecto
+package com.misiontic.proyecto.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner
 import com.misiontic.proyecto.Entities.Usuario
+import com.misiontic.proyecto.R
 import com.misiontic.proyecto.database.Saber11Database
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -118,7 +119,7 @@ class RegistroActivity : AppCompatActivity() {
                 val usuario = Usuario(
                     0, edtNombres.text.toString(),
                     edtApellidos.text.toString(), edtTelefono.text.toString(),
-                    edtEmail.text.toString(), edtPassword.text.toString(),
+                    edtEmail.text.toString().trim().lowercase(), edtPassword.text.toString(),
                 rol)
 
                 runBlocking {
@@ -129,8 +130,8 @@ class RegistroActivity : AppCompatActivity() {
                             if(result != -1L){
                                 Toast.makeText(this@RegistroActivity, "Se ha registrado con éxito!", Toast.LENGTH_LONG).show()
                                 val intent = Intent(this@RegistroActivity, MainActivity::class.java)
-                                startActivity(intent)
                                 finish()
+                                startActivity(intent)
                             }
                         } else {
                             edtEmail.requestFocus()

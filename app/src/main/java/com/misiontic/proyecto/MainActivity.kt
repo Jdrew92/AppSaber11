@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                     val data = Bundle()
                     data.putInt("id", usuario.first().id)
                     data.putString("rol", usuario.first().rol)
-                    //val intent = Intent(this@MainActivity, )
+                    val intent = Intent(this@PreguntasAdapter)
                     println("Ha iniciado sesión ${usuario.first().nombres} con rol ${usuario.first().rol}")
                 } else {
                     tvLoginError.visibility = View.VISIBLE
